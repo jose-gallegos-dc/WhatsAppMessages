@@ -17,11 +17,10 @@ class WhatsappCloudApi
     * Función constructora que instancia el objeto ClientWCloudApi y los tipos de mensajes 
     *
     * @return object $client_w_cloud_api Objeto del Cliente WhatsApp Cloud Api
-    * @var array $config Array con dos claves acces_token y from_phone_number_id
     */
-    public function __construct(array $config)
+    public function __construct()
     {
-        $this->client_w_cloud_api= new ClientWCloudApi($config['access_token'], $config['from_phone_number_id']);
+        $this->client_w_cloud_api= new ClientWCloudApi();
 
         $this->text_message = new TextMessage();
 

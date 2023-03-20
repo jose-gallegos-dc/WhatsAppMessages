@@ -22,10 +22,16 @@ class ClientWCloudApi
     * @var string $acccess_token El token de acceso que brinda la cuenta de WhatsAppCloudApi
     * @var string $from_phone_number Identificador de número de teléfono que brinda la cuenta de WhatsAppCloudApi
     */
-   public function __construct(string $access_token = NULL, string $from_phone_number_id = NULL)
+   // public function __construct(string $access_token = NULL, string $from_phone_number_id = NULL)
+   // {
+   //    $this->access_token = $access_token ?: $_ENV['APP_WHATSAPP_CLOUD_API_TOKEN']  ?? NULL;
+   //    $this->from_phone_number_id = $from_phone_number_id ?: $_ENV['APP_WHATSAPP_CLOUD_API_FROM_PHONE_NUMBER'] ?? NULL;
+   // }
+
+   public function __construct()
    {
-      $this->access_token = $access_token ?: $_ENV['APP_WHATSAPP_CLOUD_API_TOKEN']  ?? NULL;
-      $this->from_phone_number_id = $from_phone_number_id ?: $_ENV['APP_WHATSAPP_CLOUD_API_FROM_PHONE_NUMBER'] ?? NULL;
+      $this->access_token = empty($_ENV["APP_WHATSAPP_CLOUD_API_TOKEN"]) ? NULL : $_ENV["APP_WHATSAPP_CLOUD_API_TOKEN"];
+      $this->from_phone_number_id = empty($_ENV["APP_WHATSAPP_CLOUD_API_FROM_PHONE_NUMBER"]) ? NULL : $_ENV["APP_WHATSAPP_CLOUD_API_FROM_PHONE_NUMBER"];
    }
 
    public function accessToken(): string
@@ -73,7 +79,7 @@ class ClientWCloudApi
                $content
             );
 
-         return $response;
+         return $response->json();
       } catch (\Throwable $th) {
          throw $th;
       }
