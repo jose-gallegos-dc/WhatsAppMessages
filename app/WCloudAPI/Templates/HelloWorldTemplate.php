@@ -20,7 +20,7 @@ class HelloWorldTemplate
             'template' => [
                 'name' => 'hello_world',
                 'language' => [
-                    'code' => 'es_ES',
+                    'code' => 'en_US',
                 ]
             ]
         ];
